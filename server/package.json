@@ -1,0 +1,17 @@
+{
+  "name": "dashboard_crm-server",
+  "version": "1.0.0",
+  "description": "Server for Dashboard CRM",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx nodemon ./src/index.js",
+    "prod": "node ./src/index.js"
+  },
+  "dependencies": {
+    "fastify": "^5.4.0"
+  },
+  "imports": {
+    "#src/*": "./src/*"
+  }
+}
