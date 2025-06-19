@@ -1,29 +1,31 @@
-import { Account, User, LeadsContact, Leads, LeadsLog } from './models/index.js';
+import { AccountModel, UserModel, LeadsContactModel, LeadsModel, LeadsLogModel } from '#database/models/index.js';
 
 // Account 1:N Users
-Account.hasMany(User, { foreignKey: 'account_id' });
-User.belongsTo(Account, { foreignKey: 'account_id' });
+AccountModel.hasMany(UserModel, { foreignKey: 'account_id' });
+UserModel.belongsTo(AccountModel, { foreignKey: 'account_id' });
 
 // Account 1:N Leads
-Account.hasMany(Leads, { foreignKey: 'account_id' });
-Leads.belongsTo(Account, { foreignKey: 'account_id' });
+AccountModel.hasMany(LeadsModel, { foreignKey: 'account_id' });
+LeadsModel.belongsTo(AccountModel, { foreignKey: 'account_id' });
 
 // LeadsContact 1:N Leads
-LeadsContact.hasMany(Leads, { foreignKey: 'contact_id' });
-Leads.belongsTo(LeadsContact, { foreignKey: 'contact_id' });
+LeadsContactModel.hasMany(LeadsModel, { foreignKey: 'contact_id' });
+LeadsModel.belongsTo(LeadsContactModel, { foreignKey: 'contact_id' });
 
 // User 1:N Leads
-User.hasMany(Leads, { foreignKey: 'user_id' });
-Leads.belongsTo(User, { foreignKey: 'user_id' });
+UserModel.hasMany(LeadsModel, { foreignKey: 'user_id' });
+LeadsModel.belongsTo(UserModel, { foreignKey: 'user_id' });
 
 // Account 1:N LeadsLog
-Account.hasMany(LeadsLog, { foreignKey: 'account_id' });
-LeadsLog.belongsTo(Account, { foreignKey: 'account_id' });
+AccountModel.hasMany(LeadsLogModel, { foreignKey: 'account_id' });
+LeadsLogModel.belongsTo(AccountModel, { foreignKey: 'account_id' });
 
 // Lead 1:N LeadsLog
-Leads.hasMany(LeadsLog, { foreignKey: 'lead_id' });
-LeadsLog.belongsTo(Leads, { foreignKey: 'lead_id' });
+LeadsModel.hasMany(LeadsLogModel, { foreignKey: 'lead_id' });
+LeadsLogModel.belongsTo(LeadsModel, { foreignKey: 'lead_id' });
 
 // User 1:N LeadsLog
-User.hasMany(LeadsLog, { foreignKey: 'user_id' });
-LeadsLog.belongsTo(User, { foreignKey: 'user_id' }); 
+UserModel.hasMany(LeadsLogModel, { foreignKey: 'user_id' });
+LeadsLogModel.belongsTo(UserModel, { foreignKey: 'user_id' });
+
+export { AccountModel, UserModel, LeadsContactModel, LeadsModel, LeadsLogModel }; 

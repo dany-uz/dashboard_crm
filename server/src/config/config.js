@@ -4,6 +4,7 @@ configDotenv();
 
 export const IS_DEV = process.env.IS_DEV === 'true';
 export const PORT = process.env.PORT;
+export const SIGN_SECRET = process.env.SIGN_SECRET;
 
 export const dbConfig = {
     DB_NAME: process.env.DB_NAME,
@@ -13,7 +14,7 @@ export const dbConfig = {
 }
 
 export const dbTables = {
-    DBT_ACCOUNTS: process.env.DBT_ACCOUNTS,
+    DBT_ACCOUNT: process.env.DBT_ACCOUNT,
     DBT_LEADS: process.env.DBT_LEADS,
     DBT_LEADS_CONTACTS: process.env.DBT_LEADS_CONTACTS,
     DBT_LEADS_LOGS: process.env.DBT_LEADS_LOGS,

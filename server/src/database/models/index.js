@@ -1,7 +1,7 @@
-import Account from './account.model.js';
-import User from './user.model.js';
-import LeadsContact from './leads_contact.model.js';
-import Leads from './leads.model.js';
-import LeadsLog from './leads_log.model.js';
+import AccountModel from './account.model.js';
+import UserModel from './user.model.js';
+import LeadsContactModel from './leads_contact.model.js';
+import LeadsModel from './leads.model.js';
+import LeadsLogModel from './leads_log.model.js';
 
-export { Account, User, LeadsContact, Leads, LeadsLog }; 
+export { AccountModel, UserModel, LeadsContactModel, LeadsModel, LeadsLogModel };
