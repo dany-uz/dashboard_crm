@@ -1,19 +1,25 @@
 import fastify from "fastify";
+import jwt from "@fastify/jwt";
 import Routes, { RootRoute } from "#routes/index.js";
-import { PORT } from "#config/config.js";
+import { PORT, SIGN_SECRET } from "#config/config.js";
 import { connectionSQL } from "#database/connection.js";
 
 const app = fastify();
 
-// Ruta raíz
+// Registramos el plugin de JWT
+app.register(jwt, {
+    secret: SIGN_SECRET
+});
+
+// Registramos la ruta raíz
 app.route(RootRoute);
 
-// Marcamos la ruta en su fase V1
+// Registramos las rutas
 app.register(
     async (fastify) => {
         Routes.forEach((route) => fastify.route(route));
     },
-    { prefix: '/v1' }
+    { prefix: '/v1' } // Fijamos la Versión 1 de las rutas
 );
 
 const start = async () => {
