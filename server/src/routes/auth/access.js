@@ -1,4 +1,5 @@
 import { signinSchema, signupSchema, signoutSchema } from './schemas/index.js';
+import { signupController } from '#controllers/auth/signup.controller.js';
 
 const AccessRoute = [
     {
@@ -37,35 +38,7 @@ const AccessRoute = [
         method: 'POST',
         url: '/signup',
         schema: signupSchema,
-        handler: async (request, reply) => {
-            try {
-                const { email, password, name } = request.body;
-                
-                // TODO: Implementar lógica de registro
-                // - Verificar si el usuario ya existe
-                // - Encriptar contraseña
-                // - Crear usuario en la base de datos
-                // - Generar token JWT
-                
-                return reply.code(201).send({
-                    success: true,
-                    message: 'Usuario registrado exitosamente',
-                    data: {
-                        token: 'jwt_token_here',
-                        user: {
-                            email,
-                            name
-                        }
-                    }
-                });
-            } catch (error) {
-                return reply.code(400).send({
-                    success: false,
-                    message: 'Error al registrar usuario',
-                    error: error.message
-                });
-            }
-        }
+        handler: signupController
     },
     {
         method: 'POST',
