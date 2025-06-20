@@ -1,38 +1,13 @@
 import { signinSchema, signupSchema, signoutSchema } from './schemas/index.js';
 import { signupController } from '#controllers/auth/signup.controller.js';
+import { signinController } from '#controllers/auth/signin.controller.js';
 
 const AccessRoute = [
     {
         method: 'POST',
         url: '/signin',
         schema: signinSchema,
-        handler: async (request, reply) => {
-            try {
-                const { email, password } = request.body;
-                
-                // TODO: Implementar lógica de autenticación
-                // - Verificar credenciales
-                // - Generar token JWT
-                // - Retornar token y datos del usuario
-                
-                return reply.code(200).send({
-                    success: true,
-                    message: 'Inicio de sesión exitoso',
-                    data: {
-                        token: 'jwt_token_here',
-                        user: {
-                            email
-                        }
-                    }
-                });
-            } catch (error) {
-                return reply.code(401).send({
-                    success: false,
-                    message: 'Credenciales inválidas',
-                    error: error.message
-                });
-            }
-        }
+        handler: signinController
     },
     {
         method: 'POST',
