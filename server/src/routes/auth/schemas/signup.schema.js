@@ -1,3 +1,4 @@
+// Schema para registrar un usuario
 export const signupSchema = {
     body: {
         type: 'object',

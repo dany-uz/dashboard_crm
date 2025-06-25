@@ -1,3 +1,4 @@
+// Schema para iniciar sesión
 export const signinSchema = {
     body: {
         type: 'object',
